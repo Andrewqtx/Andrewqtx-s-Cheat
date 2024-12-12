@@ -1164,121 +1164,66 @@ namespace OW {
 						ImGui::SameLine();
 						ImGui::Spacing();
 						ImGui::SameLine();
-						ImGui::Text(("                    Andrewqtx's Cheat"));
+						ImGui::Text(("               Andrewqtx's Cheat"));
 						ImGui::PopStyleColor();
 						ImGui::PopFont();
-						ImGui::PushFont(ico);// from here it makes text into img
+						ImGui::PushFont(ico);
 						ImGui::Spacing();
 						ImGui::Spacing();
 						ImGui::Spacing();
 						ImGui::Spacing();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora / 255.f, colorb / 255.f, colorc / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("   ");
 						ImGui::SameLine();
 						ImGui::Image((PVOID)Image, ImVec2(60, 60)); // replace with computer chip
 						ImGui::SameLine();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora / 255.f, colorb / 255.f, colorc / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("       ");
 						ImGui::PopStyleColor();
-						if (jj1 == 0) colora -= 0.7;
-						else colora += 0.7;
-						if (colora <= 0) jj1 = 1;
-						else if (colora >= 255) jj1 = 0;
+						colora = 0;
+						colorb = 191;
+						colorc = 255;
+						colora2 = 0;
+						colorb2 = 191;
+						colorc2 = 255;
+						colora3 = 0;
+						colorb3 = 191;
+						colorc3 = 255;
+						colora4 = 0;
+						colorb4 = 191;
+						colorc4 = 255;
+						colora5 = 0;
+						colorb5 = 191;
+						colorc5 = 255;
+						ImGui::SameLine();
 
-						if (jj2 == 0) colorb -= 0.7;
-						else colorb += 0.7;
-						if (colorb <= 0) jj2 = 1;
-						else if (colorb >= 255) jj2 = 0;
-
-						if (jj3 == 0) colorc -= 0.7;
-						else colorc += 0.7;
-						if (colorc <= 0) jj3 = 1;
-						else if (colorc >= 255) jj3 = 0;
-						ImGui::SameLine(); // Ensures all images and text are on the same line
-
-						ImGui::SameLine(); // Keep Image2 and text on the same line
+						ImGui::SameLine();
 						ImGui::Image((PVOID)Image2, ImVec2(60, 60)); // replace with monitor
 						ImGui::SameLine();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora2 / 255.f, colorb2 / 255.f, colorc2 / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("       ");
 						ImGui::PopStyleColor();
-						if (jj12 == 0) colora2 -= 0.7;
-						else colora2 += 0.7;
-						if (colora2 <= 0) jj12 = 1;
-						else if (colora2 >= 255) jj12 = 0;
-
-						if (jj22 == 0) colorb2 -= 0.7;
-						else colorb2 += 0.7;
-						if (colorb2 <= 0) jj22 = 1;
-						else if (colorb2 >= 255) jj22 = 0;
-
-						if (jj32 == 0) colorc2 -= 0.7;
-						else colorc2 += 0.7;
-						if (colorc2 <= 0) jj32 = 1;
-						else if (colorc2 >= 255) jj32 = 0;
 
 						ImGui::SameLine();
 						ImGui::Image((PVOID)Image3, ImVec2(60, 60)); // replace with fangs
 						ImGui::SameLine();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora3 / 255.f, colorb3 / 255.f, colorc3 / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("       ");
 						ImGui::PopStyleColor();
-						if (jj13 == 0) colora3 -= 0.7;
-						else colora3 += 0.7;
-						if (colora3 <= 0) jj13 = 1;
-						else if (colora3 >= 255) jj13 = 0;
-
-						if (jj23 == 0) colorb3 -= 0.7;
-						else colorb3 += 0.7;
-						if (colorb3 <= 0) jj23 = 1;
-						else if (colorb3 >= 255) jj23 = 0;
-
-						if (jj33 == 0) colorc3 -= 0.7;
-						else colorc3 += 0.7;
-						if (colorc3 <= 0) jj33 = 1;
-						else if (colorc3 >= 255) jj33 = 0;
 
 						ImGui::SameLine();
 						ImGui::Image((PVOID)Image4, ImVec2(60, 60)); // replace with padlock user
 						ImGui::SameLine();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora4 / 255.f, colorb4 / 255.f, colorc4 / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("       ");
 						ImGui::PopStyleColor();
-						if (jj14 == 0) colora4 -= 0.7;
-						else colora4 += 0.7;
-						if (colora4 <= 0) jj14 = 1;
-						else if (colora4 >= 255) jj14 = 0;
-
-						if (jj24 == 0) colorb4 -= 0.7;
-						else colorb4 += 0.7;
-						if (colorb4 <= 0) jj24 = 1;
-						else if (colorb4 >= 255) jj24 = 0;
-
-						if (jj34 == 0) colorc4 -= 0.7;
-						else colorc4 += 0.7;
-						if (colorc4 <= 0) jj34 = 1;
-						else if (colorc4 >= 255) jj34 = 0;
 
 						ImGui::SameLine();
 						ImGui::Image((PVOID)Image5, ImVec2(60, 60)); // replace with programming
 						ImGui::SameLine();
-						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora5 / 255.f, colorb5 / 255.f, colorc5 / 255.f, 255.f / 255.f));
+						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.f, 191.f / 255.f, 255.f / 255.f, 1.f));
 						ImGui::Text("       ");
 						ImGui::PopStyleColor();
-						if (jj15 == 0) colora5 -= 0.7;
-						else colora5 += 0.7;
-						if (colora5 <= 0) jj15 = 1;
-						else if (colora5 >= 255) jj15 = 0;
-
-						if (jj25 == 0) colorb5 -= 0.7;
-						else colorb5 += 0.7;
-						if (colorb5 <= 0) jj25 = 1;
-						else if (colorb5 >= 255) jj25 = 0;
-
-						if (jj35 == 0) colorc5 -= 0.7;
-						else colorc5 += 0.7;
-						if (colorc5 <= 0) jj35 = 1;
-						else if (colorc5 >= 255) jj35 = 0;
 						ImGui::PopFont();
 						ImGui::Spacing();
 						ImGui::SameLine();
