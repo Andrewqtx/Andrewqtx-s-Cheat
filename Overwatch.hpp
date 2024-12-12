@@ -1139,7 +1139,7 @@ namespace OW {
 					ImGui::SetNextWindowPos(ImVec2(OW::WX / 2.f - 550.f, OW::WY / 2.f - 425.f));
 					ImGui::SetNextWindowSize(ImVec2(1100, 850));
 					bool _visible = true;
-					if (ImGui::Begin((u8"ow2 test"), &_visible, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoTitleBar)) {
+					if (ImGui::Begin((u8"Andrewqtx's Cheat"), &_visible, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoTitleBar)) {
 						ImGui::Spacing();
 						ImGui::PushFont(ico);
 						ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(colora / 255.f, colorb / 255.f, colorc / 255.f, 255.f / 255.f));
