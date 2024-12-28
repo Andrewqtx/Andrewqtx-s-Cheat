@@ -307,35 +307,37 @@ namespace OW {
 				uint64_t v3 = v2 - (uint64_t)1;
 				uint32_t v4 = index & 0x3F;
 				uint32_t v5 = index / 0x3F;
+				uint64_t v12 = SDK->RPM<uint64_t>(v1 + 8LL * v5 + 272);
+				uint64_t v13 = (v3 & v12) - (((v3 & v12) >> 1) & 0x5555555555555555LL);
 
-				uint64_t v6 = SDK->RPM<uint64_t>(v1 + 8LL * v5 + 272);
-				uint64_t v7 = (v3 & v6) - (((v3 & v6) >> 1) & 0x5555555555555555LL);
+				uint64_t var_qword = SDK->RPM<uint64_t>(SDK->dwGameBase + 0x35E7368);
+				uint8_t var_byte = SDK->RPM<uint8_t>(SDK->dwGameBase + 0x330A78F);
 
-				uint64_t var_qword = SDK->RPM<uint64_t>(SDK->dwGameBase + 0x36333E8);
-				uint8_t var_byte = SDK->RPM<uint8_t>(SDK->dwGameBase + 0x33561FB);
+				uint64_t v25 = __ROL8__(
+					SDK->RPM<uint64_t>(var_qword + 508) ^
+					(SDK->RPM<uint64_t>(SDK->RPM<uint64_t>(v1 + 128)
+						+ 8 * (SDK->RPM<uint8_t>(v5 + v1 + 304)
+							+ ((0x101010101010101i64 *
+								(((v13 & 0x3333333333333333i64)
+									+ ((v13 >> 2) & 0x3333333333333333i64)
+									+ (((v13 & 0x3333333333333333i64)
+										+ ((v13 >> 2) & 0x3333333333333333i64)) >> 4))
+									& 0xF0F0F0F0F0F0F0Fi64)) >> 56)))
+						+ 0x19EAD34E1630B0Ei64),
+					12);
 
-				uint64_t v8 = SDK->RPM<uint64_t>(var_qword + 216) ^ __ROL8__(
-					__ROR8__(
-						SDK->RPM<uint64_t>(SDK->RPM<uint64_t>(v1 + 128)
-							+ 8
-							* (SDK->RPM<uint8_t>(v5 + v1 + 304)
-								+ ((0x101010101010101i64
-									* (((v7 & 0x3333333333333333i64)
-										+ ((v7 >> 2) & 0x3333333333333333i64)
-										+ (((v7 & 0x3333333333333333i64)
-											+ ((v7 >> 2) & 0x3333333333333333i64)) >> 4)) & 0xF0F0F0F0F0F0F0Fi64)) >> 56))),
-						30)
-					- 0x20E14CA056BDD218i64,
-					5) ^ 0xEDD93EBFC6A7A25Dui64;
-				v8 = __ROL8__(__ROL8__(v8, 26), 19);;
-				v8 = (((unsigned __int8)var_byte ^ v8) + 0xD5B626AAD3E9645i64) & -(int)(__int64)((v2 & v6) >> v4);
+				v25 = (__ROR8__(v25, 23) + 0x14ECA6C43B81C4Ei64) ^ 0xA01DE9902B9F26E1ui64;
+				v25 = __ROL8__(v25, 4);
+				v25 = ((unsigned __int8)var_byte ^ __ROR8__(v25, 3) ^ 0xE8165BCB3CDD56B2ui64) + 0x53BD003AF340E72Di64;
+				v25 = v25 & -(int)(__int64)((v2 & v12) >> v4);
+				return v25;
 
-				return v8;
 			}
 		}
 		__except (EXCEPTION_EXECUTE_HANDLER) {}
 		return NULL;
 	}
+
  
 
 

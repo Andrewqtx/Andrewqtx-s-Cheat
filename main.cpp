@@ -33,9 +33,9 @@ void MainThread() {
 
 	while (FindWindowA(skCrypt("TankWindowClass"), NULL))
 	{
-		auto viewMatrixVal = SDK->RPM<uint64_t>(((SDK->RPM<uint64_t>(SDK->dwGameBase + offset::Address_viewmatrix_base) - offset::offset_viewmatrix_xor_key) ^ offset::offset_viewmatrix_xor_key2) - offset::offset_viewmatrix_xor_key3);
-		viewMatrixVal = SDK->RPM<uint64_t>(viewMatrixVal+ 0x48);
-		viewMatrix_xor_ptr = viewMatrixVal+0x140;
+		auto viewMatrixVal = SDK->RPM<uint64_t>(((SDK->RPM<uint64_t>(SDK->dwGameBase + offset::Address_viewmatrix_base) - offset::offset_viewmatrix_xor_key) ^ offset::offset_viewmatrix_xor_key2) + offset::offset_viewmatrix_xor_key3);
+		viewMatrixVal = SDK->RPM<uint64_t>(viewMatrixVal + 0x48);
+		viewMatrix_xor_ptr = viewMatrixVal + 0x140;
 		auto view = SDK->RPM<uint64_t>(SDK->dwGameBase + offset::Address_viewmatrix_base_test) + offset::offset_viewmatrix_ptr;
 		viewMatrixPtr = view;
 
