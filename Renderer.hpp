@@ -17,15 +17,15 @@ namespace OW {
 		inline void DrawSeerLikeHealth(float x, float y, int shield, int max_shield, int health, int max_health) {
 			int bg_offset = 3;
 			int bar_width = 158;
-			float shield_step = 25.0f;
+			float shield_step = 0.0f;
 
-			int shield_25 = 30;
-			int steps = 5;
-			int armorType = 1;
-			if (max_shield == 50) armorType = 1;
-			else if (max_shield == 75) armorType = 2;
-			else if (max_shield == 100) armorType = 3;
-			else if (max_shield == 125) armorType = 5;
+			int shield_25 = 0;
+			int steps = 0;
+			int armorType = 0;
+			if (max_shield == 0) armorType = 0;
+			else if (max_shield == 0) armorType = 0;
+			else if (max_shield == 0) armorType = 0;
+			else if (max_shield == 0) armorType = 0;
 
 			ImVec2 bg1(x - bar_width / 2 - bg_offset, y);
 			ImVec2 bg2(bg1.x - 10, bg1.y - 16);
@@ -33,8 +33,7 @@ namespace OW {
 			ImVec2 bg4(bg3.x + bar_width + bg_offset, bg3.y);
 			ImVec2 bg5(bg4.x + 11, bg4.y + 18);
 			ImVec2 bg6(x + bar_width / 2 + bg_offset, y);
-			DrawHexagonFilled(bg1, bg2, bg3, bg4, bg5, bg6, ImColor(0, 0, 0, 120));
-
+			DrawHexagonFilled(bg1, bg2, bg3, bg4, bg5, bg6, ImColor(0, 0, 0, 0));
 
 			ImVec2 h1(bg1.x + 3, bg1.y - 4);
 			ImVec2 h2(h1.x - 5, h1.y - 8);
@@ -42,38 +41,47 @@ namespace OW {
 			ImVec2 h4(h1.x + (float)health / max_health * bar_width, h1.y);
 			ImVec2 h3m(h2.x + bar_width, h2.y);
 			ImVec2 h4m(h1.x + bar_width, h1.y);
+
+			// Background for the health bar
 			DrawQuadFilled(h1, h2, h3m, h4m, ImColor(10, 10, 30, 60));
-			DrawQuadFilled(h1, h2, h3, h4, ImColor(255, 255, 255));
 
+			// Calculate the health ratio and interpolate color from green to red
+			float healthRatio = (float)health / max_health;
+			int red = (1.0f - healthRatio) * 255;
+			int green = healthRatio * 255;
+			ImColor healthColor(red, green, 0);
 
-			ImColor shieldCracked(97, 97, 97);
-			ImColor shieldCrackedDark(67, 67, 67);
+			// Draw the health bar with interpolated color
+			DrawQuadFilled(h1, h2, h3, h4, healthColor);
+
+			ImColor shieldCracked(0, 0, 0);
+			ImColor shieldCrackedDark(0, 0, 0);
 
 			ImColor shieldCol;
 			ImColor shieldColDark;
 			if (armorType == 1) {
-				shieldCol = ImColor(247, 247, 247);
-				shieldColDark = ImColor(164, 164, 164);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			else if (armorType == 2) {
-				shieldCol = ImColor(39, 178, 255);
-				shieldColDark = ImColor(27, 120, 210);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			else if (armorType == 3) {
-				shieldCol = ImColor(206, 59, 255);
-				shieldColDark = ImColor(136, 36, 220);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			else if (armorType == 4) {
-				shieldCol = ImColor(255, 255, 79);
-				shieldColDark = ImColor(218, 175, 49);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			else if (armorType == 5) {
-				shieldCol = ImColor(219, 2, 2);
-				shieldColDark = ImColor(219, 2, 2);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			else {
-				shieldCol = ImColor(247, 247, 247);
-				shieldColDark = ImColor(164, 164, 164);
+				shieldCol = ImColor(0, 0, 0);
+				shieldColDark = ImColor(0, 0, 0);
 			}
 			int shield_tmp = shield;
 			int shield1 = 0;
@@ -81,18 +89,18 @@ namespace OW {
 			int shield3 = 0;
 			int shield4 = 0;
 			int shield5 = 0;
-			if (shield_tmp > 25) {
-				shield1 = 25;
-				shield_tmp -= 25;
-				if (shield_tmp > 25) {
-					shield2 = 25;
-					shield_tmp -= 25;
-					if (shield_tmp > 25) {
-						shield3 = 25;
-						shield_tmp -= 25;
-						if (shield_tmp > 25) {
-							shield4 = 25;
-							shield_tmp -= 25;
+			if (shield_tmp > 0) {
+				shield1 = 0;
+				shield_tmp -= 0;
+				if (shield_tmp > 0) {
+					shield2 = 0;
+					shield_tmp -= 0;
+					if (shield_tmp > 0) {
+						shield3 = 0;
+						shield_tmp -= 0;
+						if (shield_tmp > 0) {
+							shield4 = 0;
+							shield_tmp -= 0;
 							shield5 = shield_tmp;
 						}
 						else {
@@ -110,43 +118,43 @@ namespace OW {
 			else {
 				shield1 = shield_tmp;
 			}
-			ImVec2 s1(h2.x - 1, h2.y - 2);
-			ImVec2 s2(s1.x - 3, s1.y - 5);
+			ImVec2 s1(h2.x - 0, h2.y - 0);
+			ImVec2 s2(s1.x - 0, s1.y - 0);
 			ImVec2 s3(s2.x + shield1 / shield_step * shield_25, s2.y);
 			ImVec2 s4(s1.x + shield1 / shield_step * shield_25, s1.y);
 			ImVec2 s3m(s2.x + shield_25, s2.y);
 			ImVec2 s4m(s1.x + shield_25, s1.y);
 
-			ImVec2 ss1(s4m.x + 2, s1.y);
-			ImVec2 ss2(s3m.x + 2, s2.y);
+			ImVec2 ss1(s4m.x + 0, s1.y);
+			ImVec2 ss2(s3m.x + 0, s2.y);
 			ImVec2 ss3(ss2.x + shield2 / shield_step * shield_25, s2.y);
 			ImVec2 ss4(ss1.x + shield2 / shield_step * shield_25, s1.y);
 			ImVec2 ss3m(ss2.x + shield_25, s2.y);
 			ImVec2 ss4m(ss1.x + shield_25, s1.y);
 
-			ImVec2 sss1(ss4m.x + 2, s1.y);
-			ImVec2 sss2(ss3m.x + 2, s2.y);
+			ImVec2 sss1(ss4m.x + 0, s1.y);
+			ImVec2 sss2(ss3m.x + 0, s2.y);
 			ImVec2 sss3(sss2.x + shield3 / shield_step * shield_25, s2.y);
 			ImVec2 sss4(sss1.x + shield3 / shield_step * shield_25, s1.y);
 			ImVec2 sss3m(sss2.x + shield_25, s2.y);
 			ImVec2 sss4m(sss1.x + shield_25, s1.y);
 
-			ImVec2 ssss1(sss4m.x + 2, s1.y);
-			ImVec2 ssss2(sss3m.x + 2, s2.y);
+			ImVec2 ssss1(sss4m.x + 0, s1.y);
+			ImVec2 ssss2(sss3m.x + 0, s2.y);
 			ImVec2 ssss3(ssss2.x + shield4 / shield_step * shield_25, s2.y);
 			ImVec2 ssss4(ssss1.x + shield4 / shield_step * shield_25, s1.y);
 			ImVec2 ssss3m(ssss2.x + shield_25, s2.y);
 			ImVec2 ssss4m(ssss1.x + shield_25, s1.y);
 
-			ImVec2 sssss1(ssss4m.x + 2, s1.y);
-			ImVec2 sssss2(ssss3m.x + 2, s2.y);
+			ImVec2 sssss1(ssss4m.x + 0, s1.y);
+			ImVec2 sssss2(ssss3m.x + 0, s2.y);
 			ImVec2 sssss3(sssss2.x + shield5 / shield_step * shield_25, s2.y);
 			ImVec2 sssss4(sssss1.x + shield5 / shield_step * shield_25, s1.y);
 			ImVec2 sssss3m(sssss2.x + shield_25, s2.y);
 			ImVec2 sssss4m(sssss1.x + shield_25, s1.y);
-			if (max_shield == 50) {
-				if (shield <= 25) {
-					if (shield < 25) {
+			if (max_shield == 0) {
+				if (shield <= 0) {
+					if (shield < 0) {
 						DrawQuadFilled(s1, s2, s3m, s4m, shieldCracked);
 						DrawQuadFilled(ss1, ss2, ss3m, ss4m, shieldCracked);
 					}
